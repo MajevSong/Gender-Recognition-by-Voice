@@ -87,28 +87,6 @@ basari_knn = ms.cross_val_score(estimator=knn, X=X_train, y=y_train, cv=4)
 print(basari_knn.mean())
 print(basari_knn.std())
 
-# ------ SVM ------
-
-
-# SVC = Support Vector Classification
-svc = SVC(kernel="rbf",gamma=0.1,C=5)
-svc.fit(X_train, y_train)
-
-y_tahmin_svc = svc.predict(X_test)
-
-cm_svc = confusion_matrix(y_test, y_tahmin_svc)
-print(cm_svc)
-
-
-dogruluk_degeri_svc = metrics.accuracy_score(y_test, y_tahmin_svc)
-
-print("Sınıflandırma raporu \n", metrics.classification_report(y_test, y_tahmin_svc))
-print("svc temel model dogruluk degeri = {}".format(dogruluk_degeri_svc))
-
-basari_svc = cross_val_score(estimator=svc, X=X_train, y=y_train, cv=4)
-print(basari_svc.mean())
-print(basari_svc.std())
-
 # ------ Naive Bayes ------
 
 
@@ -210,6 +188,28 @@ plt.plot(range(1, 11), acc_scores)
 plt.xlabel("min_samples_leaf")
 plt.ylabel("Acuracy Scores")
 plt.show()
+
+# ------ SVC ------
+
+
+# SVC = Support Vector Classification
+svc = SVC(kernel="rbf",gamma=0.1,C=5)
+svc.fit(X_train, y_train)
+
+y_tahmin_svc = svc.predict(X_test)
+
+cm_svc = confusion_matrix(y_test, y_tahmin_svc)
+print(cm_svc)
+
+
+dogruluk_degeri_svc = metrics.accuracy_score(y_test, y_tahmin_svc)
+
+print("Sınıflandırma raporu \n", metrics.classification_report(y_test, y_tahmin_svc))
+print("svc temel model dogruluk degeri = {}".format(dogruluk_degeri_svc))
+
+basari_svc = cross_val_score(estimator=svc, X=X_train, y=y_train, cv=4)
+print(basari_svc.mean())
+print(basari_svc.std())
 
 # SVC icin GridsearchCV uyguluyoruz.
 # 4 katmanli cross validation yaparak verimizi farkli kernel'lar da deneyerek en iyi optimizasyonu bulmaya calisiyoruz.
