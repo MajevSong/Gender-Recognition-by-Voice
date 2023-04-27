@@ -1,5 +1,7 @@
 # Gender-Recognition-by-Voice
-Classification with machine learning
+Using machine learning algorithms to predict gender from voice data. The dataset used can be found at https://www.kaggle.com/datasets/primaryobjects/voicegender.
+
+Classification algorithms;
 
 # Logistic
 ###### Logistic Accuracy Score = 0.9770554493307839
